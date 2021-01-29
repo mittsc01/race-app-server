@@ -1,7 +1,6 @@
 const express = require('express')
 const RacesService = require('../races/races-service')
 const { requireAuth } = require('../middleware/jwt-auth')
-const { reporters } = require('mocha')
 const jsonParser = express.json()
 
 const myRacesRouter = express.Router()

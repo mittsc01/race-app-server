@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS raceDirector_finishers;
+DROP TABLE IF EXISTS racedirector_finishers;

@@ -20,8 +20,8 @@ myRacesRouter
             .catch(next)
     })
     .post((req, res, next) => {
-        const { name, date, time, city, state } = req.body
-        const newRace = { name, date, time, city, state }
+        const { name, date, time, city, state, distance } = req.body
+        const newRace = { name, date, time, city, state, distance }
 
 
         for (const [key, value] of Object.entries(newRace)) {
@@ -82,8 +82,8 @@ myRacesRouter
         res.json({ ...res.race })
     })
     .patch((req, res, next) => {
-        const { name, date, time, city, state } = req.body
-        const updatedRace = { name, date, time, city, state }
+        const { name, date, time, city, state, distance } = req.body
+        const updatedRace = { name, date, time, city, state, distance }
         const numberOfValues = Object.values(updatedRace).filter(Boolean).length
         if (numberOfValues === 0) {
             return res.status(400).json({

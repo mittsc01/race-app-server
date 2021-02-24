@@ -60,6 +60,7 @@ updateRace(db,raceFields,id){
       time: race.time,
       city: race.city,
       state: race.state,
+      distance: race.distance,
       date_created: new Date(race.date_created),
       date_modified: new Date(race.date_modified),
       created_by: race.created_by

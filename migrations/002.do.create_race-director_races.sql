@@ -6,7 +6,7 @@ CREATE TABLE racedirector_races (
   city TEXT NOT NULL,
   state TEXT NOT NULL,
   created_by INTEGER
-    REFERENCES raceDirector_users(id) ON DELETE SET NULL NOT NULL,
+    REFERENCES racedirector_users(id) ON DELETE SET NULL NOT NULL,
   date_created TIMESTAMP DEFAULT now() NOT NULL,
   date_modified TIMESTAMP
 );

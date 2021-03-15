@@ -38,120 +38,109 @@ function makeUsersArray() {
   ]
 }
 
-function makeRoutesArray(users) {
+function makeRacesArray(users) {
     return [
       {
         id: 1,
-        title: 'First test post!',
+        name: 'First test post!',
+        date: '2021-11-03',
+        time: '19:00',
         created_by: users[0].id,
         date_created: new Date('2029-01-22T16:28:32.615Z'),
+        distance: '10 miles',
+        city: 'Waukon',
+        state: "IA",
         date_modified: new Date(),
       },
       {
         id: 2,
-        title: 'First test post!',
+        date: '2021-11-03',
+        time: '19:00',
+        name: 'First test post!',
         created_by: users[1].id,
+        distance: '10 miles',
+        city: 'Waukon',
+        state: "IA",
         date_created: new Date('2029-01-22T16:28:32.615Z'),
         date_modified: new Date(),
       },
       {
         id: 3,
-        title: 'First test post!',
+        date: '2021-11-03',
+        time: '19:00',
+        name: 'First test post!',
         created_by: users[0].id,
+        distance: '10 miles',
+        city: 'Waukon',
+        state: "IA",
         date_created: new Date('2029-01-22T16:28:32.615Z'),
         date_modified: new Date(),
       },
       {
         id: 4,
-        title: 'First test post!',
+        name: 'First test post!',
+        date: '2021-11-03',
+        time: '19:00',
         created_by: users[2].id,
+        distance: '10 miles',
+        city: 'Waukon',
+        state: "IA",
         date_created: new Date('2029-01-22T16:28:32.615Z'),
         date_modified: new Date(),
       },
     ]
   }
 
-  function makePointsArray(routes) {
+  function makeFinishersArray(races) {
     return [
       {
         id: 1,
-        lat: "20",
-        lng: "-50",
-        index: 1,
-        route_id: routes[0].id,
+        gender: "F",
+        name: "Filbert",
+        place: "1",
+        time: "29:00",
+        status: "Finisher",
+        race_id: races[0].id,
         date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified:new Date('2029-01-24T16:28:32.615Z')
+        age: 57
       },
       {
         id: 2,
-        lat: "20",
-        lng: "-50",
-        index: 2,
-        route_id: routes[0].id,
+        gender: "F",
+        time: "20:00",
+        name: "Filo",
+        place: "2",
+        status: "Finisher",
+        race_id: races[0].id,
         date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified:new Date('2029-01-24T16:28:32.615Z')
+        age: 29
       },
       {
         id: 3,
-        lat: "20",
-        lng: "-50",
-        index: 1,
-        route_id: routes[1].id,
-        date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified:new Date('2029-01-24T16:28:32.615Z')
+        gender: "M",
+        time: "18:37",
+        name: "Filb",
+        place: "3",
+        status: "Finisher",
+        race_id: races[1].id,
+        date_created: new Date('2029-01-20T16:28:32.615Z'),
+        age: 22
       },
       {
         id: 4,
-        lat: "20",
-        lng: "-50",
-        index: 2,
-        route_id: routes[1].id,
-        date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified:new Date('2029-01-24T16:28:32.615Z')
+        gender: "M",
+        time: "19:22",
+        name: "bert",
+        place: "5",
+        status: "Finisher",
+        race_id: races[1].id,
+        date_created: new Date('2029-01-21T16:28:32.615Z'),
+        age: 14
       },
     
     ];
   }
-  function makeRunsArray(routes) {
-    return [
-      {
-        id: 1,
-        date: "2021-02-26",
-        title: 'First test post!',
-        created_by: 1,
-        route_id: routes[0].id,
-        date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified: new Date(),
-      },
-      {
-        id: 2,
-        date: "2021-02-26",
-        title: 'First test post!',
-        created_by: 1,
-        route_id: routes[0].id,
-        date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified: new Date(),
-      },
-      {
-        id: 3,
-        date: "2021-02-26",
-        title: 'First test post!',
-        created_by: 1,
-        route_id: routes[0].id,
-        date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified: new Date(),
-      },
-      {
-        id: 4,
-        date: "2021-02-26",
-        title: 'First test post!',
-        created_by: 1,
-        route_id: routes[0].id,
-        date_created: new Date('2029-01-22T16:28:32.615Z'),
-        date_modified: new Date(),
-      },
-    ]
-  }
+
 
 
 
@@ -177,28 +166,25 @@ function makeMaliciousArticle(user) {
 
 function makeFixtures() {
   const testUsers = makeUsersArray()
-  const testRoutes = makeRoutesArray(testUsers)
-  const testPoints = makePointsArray(testRoutes)
-  const testRuns = makeRunsArray(testRoutes)
-  return { testUsers, testRoutes, testPoints, testRuns }
+  const testRaces = makeRacesArray(testUsers)
+  const testFinishers = makeFinishersArray(testRaces)
+  return { testUsers, testRaces, testFinishers}
 }
 
 function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
-        ts_runs,
-        ts_points,
-        ts_routes,
-        ts_users
+        racedirector_finishers,
+        racedirector_races,
+        racedirector_users
       `
     )
     .then(() =>
       Promise.all([
-        trx.raw(`ALTER SEQUENCE ts_runs_id_seq minvalue 0 START WITH 1`),
-        trx.raw(`ALTER SEQUENCE ts_points_id_seq minvalue 0 START WITH 1`),
-        trx.raw(`ALTER SEQUENCE ts_routes_id_seq minvalue 0 START WITH 1`),
-        trx.raw(`SELECT setval('ts_users_id_seq', 1)`),
+        trx.raw(`ALTER SEQUENCE racedirector_finishers_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`ALTER SEQUENCE racedirector_races_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`SELECT setval('racedirector_users_id_seq', 1)`),
       ])
     )
   )
@@ -209,52 +195,38 @@ function seedUsers(db, users) {
     ...user,
     password: bcrypt.hashSync(user.password, 1)
   }))
-  return db.into('ts_users').insert(preppedUsers)
+  return db.into('racedirector_users').insert(preppedUsers)
     .then(() =>
       // update the auto sequence to stay in sync
       db.raw(
-        `SELECT setval('ts_users_id_seq', ?)`,
+        `SELECT setval('racedirector_users_id_seq', ?)`,
         [users[users.length - 1].id],
       )
     )
 }
 
-function seedTables(db, users, routes, points, runs) {
+function seedTables(db, users, races, finishers) {
   // use a transaction to group the queries and auto rollback on any failure
   return db.transaction(async trx => {
     await seedUsers(trx, users)
-    await trx.into('ts_routes').insert(routes)
+    await trx.into('racedirector_races').insert(races)
     // update the auto sequence to match the forced id values
     await trx.raw(
-      `SELECT setval('ts_routes_id_seq', ?)`,
-      [routes[routes.length - 1].id],
+      `SELECT setval('racedirector_races_id_seq', ?)`,
+      [races[races.length - 1].id],
     )
-    // only insert points if there are some, also update the sequence counter
-    if (points.length) {
-      await trx.into('ts_points').insert(points)
+    // only insert finishers if there are some, also update the sequence counter
+    if (finishers.length) {
+      await trx.into('racedirector_finishers').insert(finishers)
       await trx.raw(
-        `SELECT setval('ts_points_id_seq', ?)`,
-        [points[points.length - 1].id],
+        `SELECT setval('racedirector_finishers_id_seq', ?)`,
+        [finishers[finishers.length - 1].id],
       )
     }
-    if (runs.length) {
-        await trx.into('ts_runs').insert(runs)
-        await trx.raw(
-          `SELECT setval('ts_runs_id_seq', ?)`,
-          [runs[runs.length - 1].id],
-        )
-      }
+
   })
 }
 
-function seedMaliciousArticle(db, user, article) {
-  return seedUsers(db, [user])
-    .then(() =>
-      db
-        .into('blogful_articles')
-        .insert([article])
-    )
-}
 
 function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
   const token = jwt.sign({ user_id: user.id }, secret, {
@@ -266,12 +238,11 @@ function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
 
 module.exports = {
   makeUsersArray,
-  makeRoutesArray,
+  makeRacesArray,
 
   makeFixtures,
   cleanTables,
   seedTables,
-  seedMaliciousArticle,
   makeAuthHeader,
   seedUsers,
 }

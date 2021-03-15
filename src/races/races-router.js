@@ -1,6 +1,5 @@
 const express = require('express')
 const RacesService = require('./races-service')
-const { requireAuth } = require('../middleware/jwt-auth')
 
 const racesRouter = express.Router()
 
@@ -11,7 +10,7 @@ racesRouter
       //console.log('hello')
     RacesService.getAllRaces(req.app.get('db'))
       .then(races => {
-          console.log(races)
+          //console.log(races)
         res.json(races.map(RacesService.serializeRace))
       })
       .catch(next)
@@ -21,7 +20,7 @@ racesRouter
   .route('/:race_id')
   .all(checkRaceExists)
   .get((req, res, next) => {
-      console.log('hello')
+      //console.log('hello')
     res.json(RacesService.serializeRace(res.race))
   })
 
@@ -49,10 +48,12 @@ async function checkRaceExists(req, res, next) {
       req.params.race_id
     )
 
-    if (!race)
-      return res.status(404).json({
-        error: `Race doesn't exist`
-      })
+
+      if (!race){
+        return res.sendStatus(404)
+    
+    }
+    
 
     res.race = race
     next()

@@ -67,10 +67,8 @@ myRacesRouter
                 }
                 //only allow patch request from race creator
                 if (race.created_by !== req.user.id) {
-                    return res.status(404).json({
-                        error: {
-                            message: `No race at this endpoint for current user`
-                        }
+                    return res.status(401).json({
+                        error: 'Unauthorized request'
                     })
                 }
                 res.race = race
@@ -154,7 +152,7 @@ myRacesRouter.route('/:race_id/results/')
     })
     .post((req, res, next) => {
         const { name, time, age, gender, place, status } = req.body
-        console.log(req.body)
+        //console.log(req.body)
         const newFinisher = { name, place, status }
 
 
@@ -195,9 +193,9 @@ myRacesRouter.route('/:race_id/results/:finisher_id')
                 }
                 //only allow request from race creator
                 if (race.created_by !== req.user.id) {
-                    return res.status(404).json({
+                    return res.status(401).json({
                         error: {
-                            message: `No race at this endpoint for current user`
+                            message: `Unauthorized`
                         }
                     })
                 }

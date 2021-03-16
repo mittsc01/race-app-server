@@ -1,17 +1,15 @@
 # Race Director API
 
-This is a boilerplate project used for starting new projects!
+To access the live API endpoint, use the following URL: 
+https://race-director.herokuapp.com
+## Getting Started
 
-## Set up
+1. Clone this repository and run `npm i`
+2. Create local Postgresql databases (NOTE: you will need Postgresql installed locally): `race-director` and `race-director-test`
+3. Run `mv example.env .env` and provide the local database locations within your `.env` file
+4. Run npm run migrate and npm run migrate:test to update each database with appropriate tables
+5. Run npm run dev to start server locally
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
-
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
 
 ## Description
 *all endpoints in this section require a JWT token.  All otherwise valid requests missing the token will receive a 401 unauthorized response.
@@ -57,12 +55,7 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 
 
 
-Start the application `npm start`
-
-Start nodemon for the application `npm run dev`
-
-Run the tests `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's main branch.
+## Technologies
+* NodeJS
+* Express
+* PostgreSQL

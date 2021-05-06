@@ -14,6 +14,10 @@ https://race-director.herokuapp.com
 ## Description
 *all endpoints in this section require a JWT token.  All otherwise valid requests missing the token will receive a 401 unauthorized response.
 
+## Summary
+The Race Director App is a simple app that allows the user to create races and add results.  It's as straightforward as creating an account and creating a race.  Use for your local running club or cross country team to share race information and results publicly without a lot of fuss.
+
+
 ### Races
 * GET /api/races/
     * responds with 200 and list of all races in the database
@@ -59,3 +63,10 @@ https://race-director.herokuapp.com
 * NodeJS
 * Express
 * PostgreSQL
+
+# Screenshots
+![Race results detail screenshot](/screenshots-race-app/results-detail.png)
+![Race info screenshot](/screenshots-race-app/race-detail.png)
+![Add a race view screenshot](/screenshots-race-app/add-race.png)
+![Search for races screenshot](/screenshots-race-app/search-race.png)
+
